@@ -1,0 +1,67 @@
+﻿<Window x:Class="Lab9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab9"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="0,0,-0.4,0">
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="481,12,0,0" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="356,12,0,0" TextWrapping="Wrap" Text="{Binding LastName}" VerticalAlignment="Top" Width="120"/>
+        <!--UpdateSourceTrigger = explicit to oznacza ręczną kontrole samemu trzeba wywołac funkcje-->
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="606,12,0,0" TextWrapping="Wrap" Text="{Binding Entlisting}" VerticalAlignment="Top" Width="178"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="356,41,0,0" TextWrapping="Wrap" Text="{Binding FullName, Mode=OneWay}" VerticalAlignment="Top" Width="245"/>
+        <!--mode one tim do wypełnienia formularza raz po otwarciu -->
+        <Calendar HorizontalAlignment="Left" Margin="606,35,0,0" VerticalAlignment="Top" DisplayDate="{Binding Entlisting}" SelectedDate="{Binding Entlisting}"/>
+        <ListView ItemsSource="{Binding List.students}" x:Name="StudentList" HorizontalAlignment="Left" Height="191" Margin="10,10,0,0" VerticalAlignment="Top" Width="341">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" />
+                </GridView>
+            </ListView.View>
+
+            <!--<ListViewItem>
+                <WrapPanel>
+                <TextBox ></TextBox>
+                <TextBox ></TextBox>
+                </WrapPanel>
+            </ListViewItem>-->
+        </ListView>
+
+        <ListBox x:Name="ListBox" HorizontalAlignment="Left" Height="206" Margin="10,206,0,0" VerticalAlignment="Top" Width="341" RenderTransformOrigin="0.5,0.5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel Margin="0,20,0,0" Orientation="Horizontal">
+                        <TextBox Text="{Binding Name}"/>
+                        <TextBox Text="{Binding LastName}"/>
+                        <TextBox Text="{Binding FullName, Mode=OneWay}"/>
+                        <TextBox Text="{Binding Enlisting}"/>
+                        <DatePicker SelectedDate="{Binding Enlisting}"/>
+                        
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--<StackPanel x:Name="StudentList" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="341">
+            -->
+        <!--UpdateSourceTrigger = explicit to oznacza ręczną kontrole samemu trzeba wywołac funkcje-->
+        <!--
+            <WrapPanel Height="100">
+                <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Name}"  VerticalAlignment="Top" Width="120"/>
+                <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding LastName}" VerticalAlignment="Top" Width="120"/>
+                -->
+        <!--UpdateSourceTrigger = explicit to oznacza ręczną kontrole samemu trzeba wywołac funkcje-->
+        <!--
+                <TextBox HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="{Binding Entlisting}" VerticalAlignment="Top" Width="120"/>
+                <TextBox HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="{Binding FullName, Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            </WrapPanel>
+            -->
+        <!--mode one tim do wypełnienia formularza raz po otwarciu -->
+        <!--
+        </StackPanel>-->
+
+    </Grid>
+</Window>
